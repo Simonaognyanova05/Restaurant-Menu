@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <section>
+        <h2>Admin Login</h2>
+        <div class="login-form">
+            <h2>Login</h2>
+            <form>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <h2>Admin Panel</h2>
+        <div class="admin-form">
+            <form>
+                <label for="dish-name">Dish Name</label>
+                <input type="text" id="dish-name" name="dish-name" placeholder="Enter dish name">
+
+                <label for="dish-description">Dish Description</label>
+                <textarea id="dish-description" name="dish-description" placeholder="Enter dish description"></textarea>
+
+                <label for="dish-category">Category</label>
+                <select id="dish-category" name="dish-category">
+                    <option value="starters">Starters</option>
+                    <option value="mains">Main Courses</option>
+                    <option value="desserts">Desserts</option>
+                    <option value="salads">Salads</option>
+                    <option value="drinks">Drinks</option>
+                </select>
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </section>
+    </main>
+</body>
+
+</html>
