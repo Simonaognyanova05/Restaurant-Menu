@@ -14,7 +14,6 @@ function App() {
         <Route path='/:category' element={<Menu />} />
         <Route path='/admin/login' element={<Login />} />
         <Route path='/admin/create' element={<Create />} />
-
       </Routes>
       <Footer />
     </>
