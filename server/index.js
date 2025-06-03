@@ -3,6 +3,7 @@ const cors = require('cors');
 const { adminRegister } = require('./services/adminRegister');
 const { login } = require('./services/login');
 const { createDish } = require('./services/createDish');
+const { getDishes } = require('./services/getDishes');
 
 const app = express();
 
@@ -17,7 +18,12 @@ app.post('/admin/login', async (req, res) => {
     await login(req, res);
 });
 
-app.post('/dish/create', async(req, res) => {
+app.post('/dish/create', async (req, res) => {
     await createDish(req, res);
+});
+
+app.get('/dish/:category', async (req, res) => {
+    let result = await getDishes(req, res);
+    res.json(result);
 })
 app.listen(2000);
