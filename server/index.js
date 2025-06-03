@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { adminRegister } = require('./services/adminRegister');
 const { login } = require('./services/login');
+const { createDish } = require('./services/createDish');
 
 const app = express();
 
@@ -15,4 +16,8 @@ app.post('/admin/register', async (req, res) => {
 app.post('/admin/login', async (req, res) => {
     await login(req, res);
 });
+
+app.post('/dish/create', async(req, res) => {
+    await createDish(req, res);
+})
 app.listen(2000);
