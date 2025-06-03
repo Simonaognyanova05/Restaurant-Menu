@@ -63,6 +63,7 @@ section {
 .admin-form label,
 .login-form label {
     display: block;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
