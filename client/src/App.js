@@ -1,36 +1,13 @@
-
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
 
 function App() {
   return (
     <>
-      <div class="navbar">
-        <a href="#appetizers">Предястия</a>
-        <a href="#main-courses">Основни</a>
-        <a href="#desserts">Десерти</a>
-        <a href="#salads">Салати</a>
-        <a href="#drinks">Напитки</a>
-      </div>
-
-      <div class="menu-container">
-        <div class="menu-header">
-          <h1>Gourmet Bistro</h1>
-          <p>Деликатесни ястия, приготвени с любов</p>
-        </div>
-
-        <div class="menu-section" id="appetizers">
-          <h2>Предястия</h2>
-          <div class="menu-item">
-            <span class="menu-item-name">Брускета</span>
-            <span class="menu-item-description">Хрупкав препечен хляб, гарниран с домати, босилек и зехтин.</span>
-            <span class="menu-item-price">8 лв.</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="menu-footer">
-        <p>Come visit us for an unforgettable dining experience! <a href="#">Reserve a table now</a>.</p>
-      </div>
+      <Header />
+      <Menu />
+      <Footer />
     </>
   );
 }
