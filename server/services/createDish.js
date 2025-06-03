@@ -11,11 +11,11 @@ const connectionParams = {
 async function createDish(req, res) {
     await mongoose.connect(dbUrl, connectionParams);
 
-    const { name, description, category } = req.body;
+    const { name, description, category, price } = req.body;
 
     try {
         const dish = new Dish({
-            name, description, category,
+            name, description, category, price
         });
 
         await dish.save();
