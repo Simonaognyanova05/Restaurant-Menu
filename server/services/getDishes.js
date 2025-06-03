@@ -14,10 +14,10 @@ async function getDishes(req, res) {
     const { category } = req.params;
 
     try {
-        if (category !== "appetizers" || category !== "main" || category !== "desserts" || category !== "salats" || category !== "drinks") {
+        const dishes = await Dish.find({ category });
+        if (!dishes) {
             return res.status(400).json();
         }
-        const dishes = await Dish.find({ category });
 
         return dishes;
     } catch (e) {
