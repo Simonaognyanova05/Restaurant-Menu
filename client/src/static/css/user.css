@@ -120,8 +120,52 @@ body {
     text-decoration: underline;
 }
 
+.menu-item-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.edit-button {
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #2980b9;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    .menu-item-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+
     .menu-item {
         flex-direction: column;
         align-items: flex-start;

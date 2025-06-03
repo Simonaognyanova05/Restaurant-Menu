@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import { useAuth } from "../../contexts/AuthContext";
 import { getDishes } from "../../services/getDishes";
 import MenuItem from "./MenuItem";
 
 export default function Menu() {
     const [dishes, setDishes] = useState([]);
     const { category } = useParams();
+    const {admin} = useAuth();
 
     useEffect(() => {
         getDishes(category)
@@ -30,7 +32,7 @@ export default function Menu() {
                     <>
                         <h2>{dishes[0]?.category}</h2>
                         {dishes.map((x) => (
-                            <MenuItem key={x._id} dish={x} />
+                            <MenuItem key={x._id} dish={x} admin={admin} />
                         ))}
                     </>
                 ) : (
