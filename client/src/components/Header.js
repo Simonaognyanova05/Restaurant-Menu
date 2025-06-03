@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
     return (
         <>
             <div className="navbar">
-                <a href="#appetizers">Предястия</a>
-                <a href="#main-courses">Основни</a>
-                <a href="#desserts">Десерти</a>
-                <a href="#salads">Салати</a>
-                <a href="#drinks">Напитки</a>
+                <Link to="/appetizers">Предястия</Link>
+                <Link to="/main">Основни</Link>
+                <Link to="/desserts">Десерти</Link>
+                <Link to="/salads">Салати</Link>
+                <Link to="/drinks">Напитки</Link>
             </div>
         </>
     );
