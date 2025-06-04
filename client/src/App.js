@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Create from './components/Create';
 import Logout from './components/Logout';
 import Delete from './components/Delete';
+import Edit from './components/Edit';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path='/admin/create' element={<Create />} />
         <Route path='/admin/logout' element={<Logout />} />
         <Route path='/delete/:dishId' element={<Delete />} />
-
+        <Route path='/edit/:dishId' element={<Edit />} />
 
       </Routes>
       <Footer />
