@@ -6,6 +6,7 @@ import Menu from "./components/Menu/Menu";
 import Login from './components/Login';
 import Create from './components/Create';
 import Logout from './components/Logout';
+import Delete from './components/Delete';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path='/admin/login' element={<Login />} />
         <Route path='/admin/create' element={<Create />} />
         <Route path='/admin/logout' element={<Logout />} />
+        <Route path='/delete/:dishId' element={<Delete />} />
+
 
       </Routes>
       <Footer />
