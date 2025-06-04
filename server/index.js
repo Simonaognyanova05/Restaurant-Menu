@@ -4,6 +4,7 @@ const { adminRegister } = require('./services/adminRegister');
 const { login } = require('./services/login');
 const { createDish } = require('./services/createDish');
 const { getDishes } = require('./services/getDishes');
+const { deleteDish } = require('./services/deleteDish');
 
 const app = express();
 
@@ -25,5 +26,9 @@ app.post('/dish/create', async (req, res) => {
 app.get('/dish/:category', async (req, res) => {
     let result = await getDishes(req, res);
     res.json(result);
+});
+
+app.delete('/delete/:dishId', async (req, res) => {
+    await deleteDish(req, res);
 })
 app.listen(2000);
