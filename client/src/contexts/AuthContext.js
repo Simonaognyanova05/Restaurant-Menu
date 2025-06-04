@@ -25,8 +25,12 @@ export const AuthProvider = ({ children }) => {
         setAdmin(authData);
     };
 
+    const onLogout = () => {
+        setAdmin(initialState);
+    };
+
     return (
-        <AuthContext.Provider value={{ admin, onLogin }}>
+        <AuthContext.Provider value={{ admin, onLogin, onLogout }}>
             {children}
         </AuthContext.Provider>
     );

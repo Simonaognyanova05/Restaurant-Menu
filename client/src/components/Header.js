@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Header() {
+    const { admin } = useAuth();
+
+    const loggedAdmin = (
+        <>
+            <Link to="/admin/create">Създаване на ястие</Link>
+            <Link to="/admin/logout">Изход</Link>
+        </>
+    );
     return (
         <>
             <div className="navbar">
@@ -9,6 +18,9 @@ export default function Header() {
                 <Link to="/Десерти">Десерти</Link>
                 <Link to="/Салати">Салати</Link>
                 <Link to="/Напитки">Напитки</Link>
+                {
+                    admin._id ? loggedAdmin : ''
+                }
             </div>
         </>
     );
