@@ -5,6 +5,7 @@ const { login } = require('./services/login');
 const { createDish } = require('./services/createDish');
 const { getDishes } = require('./services/getDishes');
 const { deleteDish } = require('./services/deleteDish');
+const { editDish } = require('./services/editDish');
 
 const app = express();
 
@@ -30,5 +31,9 @@ app.get('/dish/:category', async (req, res) => {
 
 app.delete('/delete/:dishId', async (req, res) => {
     await deleteDish(req, res);
+});
+
+app.put('/edit/:dishId', async (req, res) => {
+    await editDish(req, res);
 })
 app.listen(2000);
