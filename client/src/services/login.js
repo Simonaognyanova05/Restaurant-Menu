@@ -1,11 +1,11 @@
-export async function login(username, password) {
-    let user = await fetch('http://localhost:2000/admin/login', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify({username, password})
-    });
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebaseConfig";
 
-    return await user.json();
+export async function login(email, password) {
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        return await (userCredential.user).toJSON(); 
+    } catch (error) {
+        throw new Error(error.message);
+    }
 }

@@ -19,7 +19,7 @@ export default function Header() {
                 <Link to="/Салати">Салати</Link>
                 <Link to="/Напитки">Напитки</Link>
                 {
-                    admin._id ? loggedAdmin : ''
+                    admin.email ? loggedAdmin : ''
                 }
             </div>
         </>

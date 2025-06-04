@@ -3,7 +3,7 @@ import { editDish } from "../services/editDish";
 
 export default function Edit() {
     const navigate = useNavigate();
-    const {dishId} = useParams();
+    const { dishId } = useParams();
 
     const editHandler = (e) => {
         e.preventDefault();
@@ -15,19 +15,23 @@ export default function Edit() {
             .then(() => {
                 navigate(`/${category}`);
             })
+            .catch((error) => {
+                console.error("Error editing dish:", error);
+            });
     }
+
     return (
-        <div class="admin-form">
-            <h2>Създаване на ястие</h2>
+        <div className="admin-form">
+            <h2>Редактиране на ястие</h2>
 
             <form onSubmit={editHandler}>
-                <label for="dish-name">Име на ястието</label>
+                <label htmlFor="dish-name">Име на ястието</label>
                 <input type="text" id="dish-name" name="name" placeholder="Въведете име" />
 
-                <label for="dish-description">Описание на ястието</label>
+                <label htmlFor="dish-description">Описание на ястието</label>
                 <textarea id="dish-description" name="description" placeholder="Въведете описание"></textarea>
 
-                <label for="dish-category">Категория</label>
+                <label htmlFor="dish-category">Категория</label>
                 <select id="dish-category" name="category">
                     <option value="Предястия">Предястия</option>
                     <option value="Основни">Основни</option>
@@ -36,10 +40,10 @@ export default function Edit() {
                     <option value="Напитки">Напитки</option>
                 </select>
 
-                <label for="dish-price">Цена</label>
+                <label htmlFor="dish-price">Цена</label>
                 <input type="text" id="dish-price" name="price" placeholder="Въведете цена" />
 
-                <button type="submit">Създаване</button>
+                <button type="submit">Запази</button>
             </form>
         </div>
     );

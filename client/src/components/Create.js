@@ -11,22 +11,26 @@ export default function Create() {
         const { name, description, category, price } = Object.fromEntries(formData);
 
         createDish(name, description, category, price)
-            .then(() => {
+            .then((id) => {
+                console.log("Dish created with ID:", id);
                 navigate('/');
             })
+            .catch((error) => {
+                console.error("Error creating dish:", error);
+            });
     }
-    return (
-        <div class="admin-form">
-            <h2>Създаване на ястие</h2>
 
+    return (
+        <div className="admin-form">
+            <h2>Създаване на ястие</h2>
             <form onSubmit={createHandler}>
-                <label for="dish-name">Име на ястието</label>
+                <label htmlFor="dish-name">Име на ястието</label>
                 <input type="text" id="dish-name" name="name" placeholder="Въведете име" />
 
-                <label for="dish-description">Описание на ястието</label>
+                <label htmlFor="dish-description">Описание на ястието</label>
                 <textarea id="dish-description" name="description" placeholder="Въведете описание"></textarea>
 
-                <label for="dish-category">Категория</label>
+                <label htmlFor="dish-category">Категория</label>
                 <select id="dish-category" name="category">
                     <option value="Предястия">Предястия</option>
                     <option value="Основни">Основни</option>
@@ -35,7 +39,7 @@ export default function Create() {
                     <option value="Напитки">Напитки</option>
                 </select>
 
-                <label for="dish-price">Цена</label>
+                <label htmlFor="dish-price">Цена</label>
                 <input type="text" id="dish-price" name="price" placeholder="Въведете цена" />
 
                 <button type="submit">Създаване</button>

@@ -1,8 +1,13 @@
+import { db } from "../config/firebaseConfig";
+import { doc, deleteDoc } from "firebase/firestore";
+
 export async function deleteDish(dishId) {
-    await fetch(`http://localhost:2000/delete/${dishId}`, {
-        method: 'DELETE',
-        headers: {
-            'content-type': 'application/json'
-        }
-    })
+    try {
+        const dishRef = doc(db, "dishes", dishId);
+        await deleteDoc(dishRef);
+        console.log(`Dish with ID ${dishId} deleted successfully`);
+    } catch (error) {
+        console.error("Error deleting dish:", error);
+        throw error;
+    }
 }

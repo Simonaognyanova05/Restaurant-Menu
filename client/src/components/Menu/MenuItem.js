@@ -15,7 +15,7 @@ export default function MenuItem({ dish, admin }) {
                 <span className="menu-item-price">{dish.price} лв.</span>
 
                 {
-                    admin._id ? loggedAdmin : '' 
+                    admin.email ? loggedAdmin : '' 
                 }
             </div>
 

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import '../static/css/style.css'
+import '../static/css/style.css';
 import { useAuth } from '../contexts/AuthContext';
 import { login } from '../services/login';
 
@@ -11,27 +11,28 @@ export default function Login() {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const { username, password } = Object.fromEntries(formData);
+        const { email, password } = Object.fromEntries(formData);
 
-        login(username, password)
+        login(email, password)
             .then(res => {
-                onLogin(res);
+                onLogin(res); 
                 navigate('/admin/create');
             })
-            .catch(() => {
-                console.log("You can't login!");
+            .catch((error) => {
+                console.error("Login failed:", error.message);
             });
-    }
+    };
+
     return (
         <section>
             <div className="login-form">
                 <h2>Влизане като администратор</h2>
                 <form onSubmit={loginHandler}>
-                    <label for="username">Потребителско име</label>
-                    <input type="text" id="username" name="username" placeholder="Въведете потребителско име" />
+                    <label htmlFor="email">Имейл</label>
+                    <input type="email" id="email" name="email" placeholder="Въведете имейл" required />
 
-                    <label for="password">Парола</label>
-                    <input type="password" id="password" name="password" placeholder="Въведете парола" />
+                    <label htmlFor="password">Парола</label>
+                    <input type="password" id="password" name="password" placeholder="Въведете парола" required />
 
                     <button type="submit">Влизане</button>
                 </form>
