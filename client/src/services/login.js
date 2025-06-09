@@ -4,8 +4,9 @@ import { auth } from "../config/firebaseConfig";
 export async function login(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        return await (userCredential.user).toJSON(); 
+        return userCredential.user.toJSON();
     } catch (error) {
-        throw new Error(error.message);
+        console.error("Firebase login error:", error); // Логване на грешката за отстраняване
+        throw error; // Запазете оригиналната грешка за обработка в `catch`
     }
 }
