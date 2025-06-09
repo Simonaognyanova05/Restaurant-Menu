@@ -8,12 +8,14 @@ import Create from './components/Create';
 import Logout from './components/Logout';
 import Delete from './components/Delete';
 import Edit from './components/Edit';
+import Home from './components/Home';
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/:category' element={<Menu />} />
         <Route path='/admin/login' element={<Login />} />
         <Route path='/admin/create' element={<Create />} />
