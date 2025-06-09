@@ -4,7 +4,6 @@ export default function Home() {
             <div className="home-header">
                 <h1>Добре дошли в Gourmet Bistro</h1>
                 <p>Кулинарното изживяване, което заслужавате</p>
-                <button className="cta-button">Разгледайте менюто</button>
             </div>
             <div className="home-showcase">
                 <img

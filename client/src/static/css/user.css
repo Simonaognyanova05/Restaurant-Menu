@@ -170,6 +170,15 @@ body {
     margin-bottom: 15px;
 }
 
+.menu-header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-header a:hover {
+    text-decoration: none;
+}
+
 .home-intro p {
     font-size: 1.2rem;
     line-height: 1.8;

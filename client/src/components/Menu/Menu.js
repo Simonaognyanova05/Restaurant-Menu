@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAuth } from "../../contexts/AuthContext";
 import { getDishes } from "../../services/getDishes";
 import MenuItem from "./MenuItem";
@@ -7,7 +7,7 @@ import MenuItem from "./MenuItem";
 export default function Menu() {
     const [dishes, setDishes] = useState([]);
     const { category } = useParams();
-    const {admin} = useAuth();
+    const { admin } = useAuth();
 
     useEffect(() => {
         getDishes(category)
@@ -23,7 +23,7 @@ export default function Menu() {
     return (
         <div className="menu-container">
             <div className="menu-header">
-                <h1>Gourmet Bistro</h1>
+                <Link to="/"><h1>Gourmet Bistro</h1></Link>
                 <p>Деликатесни ястия, приготвени с любов</p>
             </div>
 
