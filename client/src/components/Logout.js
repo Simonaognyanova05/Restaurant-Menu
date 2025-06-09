@@ -6,7 +6,7 @@ export default function Logout() {
     const { onLogout } = useAuth();
 
     onLogout();
-    navigate('/Предястия');
+    navigate('/');
 
     return null;
 }
