@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export default function MenuItem({ dish, admin }) {
     const loggedAdmin = (
         <div className="menu-item-actions">
-            <Link className="edit-button" to={`/edit/${dish._id}`}>Edit</Link>
-            <Link className="delete-button" to={`/delete/${dish._id}`}>Delete</Link>
+            <Link className="edit-button" to={`/edit/${dish._id}`}>Редактиране</Link>
+            <Link className="delete-button" to={`/delete/${dish._id}`}>Изтриване</Link>
         </div>
     );
     return (
