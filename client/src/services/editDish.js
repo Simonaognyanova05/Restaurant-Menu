@@ -8,7 +8,7 @@ export async function editDish(name, description, category, price, dishId) {
             name,
             description,
             category,
-            price: parseFloat(price) // Уверете се, че цената е число
+            price: parseFloat(price)
         });
     } catch (error) {
         console.error("Error updating dish:", error);
