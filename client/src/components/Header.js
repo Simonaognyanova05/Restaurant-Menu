@@ -13,6 +13,7 @@ export default function Header() {
     const loggedAdmin = (
         <>
             <Link to="/admin/create">Създаване на ястие</Link>
+            <Link to="/admin/register">Създаване на потребител</Link>
             <Link to="/admin/logout">Изход</Link>
         </>
     );
