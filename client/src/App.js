@@ -10,6 +10,7 @@ import Delete from './components/Delete';
 import Edit from './components/Edit';
 import Home from './components/Home';
 import Register from './components/Register';
+import ForgottenPass from './components/ForgottenPass';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/:category' element={<Menu />} />
         <Route path='/admin/login' element={<Login />} />
         <Route path='/admin/register' element={<Register />} />
+        <Route path='/admin/forgotten' element={<ForgottenPass />} />
         <Route path='/admin/create' element={<Create />} />
         <Route path='/admin/logout' element={<Logout />} />
         <Route path='/delete/:dishId' element={<Delete />} />

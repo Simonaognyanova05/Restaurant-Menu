@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../static/css/style.css';
 import { useAuth } from '../contexts/AuthContext';
 import { login } from '../services/login';
@@ -59,6 +59,7 @@ export default function Login() {
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                     <button type="submit">Влизане</button>
                 </form>
+                <Link to="/admin/forgotten" style={{ display: "inline-block", marginTop: "16px" }}>Забравена парола</Link>
             </div>
         </section>
     );
