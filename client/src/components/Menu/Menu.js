@@ -23,8 +23,8 @@ export default function Menu() {
     return (
         <div className="menu-container">
             <div className="menu-header">
-                <Link to="/"><h1>Gourmet Bistro</h1></Link>
-                <p>Деликатесни ястия, приготвени с любов</p>
+                <Link to="/"><h1>Под старата круша</h1></Link>
+                <p>Традиционни ястия, приготвени с любов.</p>
             </div>
 
             <div className="menu-section" id={category}>
