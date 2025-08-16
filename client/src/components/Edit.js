@@ -1,24 +1,56 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { editDish } from "../services/editDish";
+
+// нова функция за взимане на данните на конкретно ястие
+import { getDishById } from "../services/getDishById";
 
 export default function Edit() {
     const navigate = useNavigate();
     const { dishId } = useParams();
 
+    // локален state за формата
+    const [formValues, setFormValues] = useState({
+        name: "",
+        description: "",
+        category: "",
+        priceLv: "",
+        priceEuro: ""
+    });
+
+    // зареждане на ястието при отваряне
+    useEffect(() => {
+        getDishById(dishId)
+            .then(dish => {
+                setFormValues({
+                    name: dish.name,
+                    description: dish.description,
+                    category: dish.category,
+                    priceLv: dish.priceLv,
+                    priceEuro: dish.priceEuro
+                });
+            })
+            .catch(err => console.error("Error fetching dish:", err));
+    }, [dishId]);
+
+    const changeHandler = (e) => {
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    };
+
     const editHandler = (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.currentTarget);
-        const { name, description, category, priceLv, priceEuro } = Object.fromEntries(formData);
+        const { name, description, category, priceLv, priceEuro } = formValues;
 
         editDish(name, description, category, priceLv, priceEuro, dishId)
-            .then(() => {
-                navigate(`/${category}`);
-            })
+            .then(() => navigate(`/${category}`))
             .catch((error) => {
                 console.error("Error editing dish:", error);
             });
-    }
+    };
 
     return (
         <div className="admin-form">
@@ -26,13 +58,29 @@ export default function Edit() {
 
             <form onSubmit={editHandler}>
                 <label htmlFor="dish-name">Име на ястието</label>
-                <input type="text" id="dish-name" name="name" placeholder="Въведете име" />
+                <input
+                    type="text"
+                    id="dish-name"
+                    name="name"
+                    value={formValues.name}
+                    onChange={changeHandler}
+                />
 
                 <label htmlFor="dish-description">Описание на ястието</label>
-                <textarea id="dish-description" name="description" placeholder="Въведете описание"></textarea>
+                <textarea
+                    id="dish-description"
+                    name="description"
+                    value={formValues.description}
+                    onChange={changeHandler}
+                ></textarea>
 
                 <label htmlFor="dish-category">Категория</label>
-                <select id="dish-category" name="category">
+                <select
+                    id="dish-category"
+                    name="category"
+                    value={formValues.category}
+                    onChange={changeHandler}
+                >
                     <option value="Закуски">Закуски</option>
                     <option value="Топли-предястия">Топли предястия</option>
                     <option value="Супи">Супи</option>
@@ -48,11 +96,23 @@ export default function Edit() {
                     <option value="Напитки">Напитки</option>
                 </select>
 
-                <label htmlFor="dish-price">Цена в лв.</label>
-                <input type="text" id="dish-price" name="priceLv" placeholder="Въведете цена в лв." />
+                <label htmlFor="dish-price-lv">Цена в лв.</label>
+                <input
+                    type="text"
+                    id="dish-price-lv"
+                    name="priceLv"
+                    value={formValues.priceLv}
+                    onChange={changeHandler}
+                />
 
-                <label htmlFor="dish-price">Цена в евро.</label>
-                <input type="text" id="dish-price" name="priceEuro" placeholder="Въведете цена в евро." />
+                <label htmlFor="dish-price-euro">Цена в евро</label>
+                <input
+                    type="text"
+                    id="dish-price-euro"
+                    name="priceEuro"
+                    value={formValues.priceEuro}
+                    onChange={changeHandler}
+                />
 
                 <button type="submit">Запази</button>
             </form>
