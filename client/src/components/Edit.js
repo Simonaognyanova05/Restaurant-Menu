@@ -9,9 +9,9 @@ export default function Edit() {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const { name, description, category, price } = Object.fromEntries(formData);
+        const { name, description, category, priceLv, priceEuro } = Object.fromEntries(formData);
 
-        editDish(name, description, category, price, dishId)
+        editDish(name, description, category, priceLv, priceEuro, dishId)
             .then(() => {
                 navigate(`/${category}`);
             })
@@ -33,15 +33,26 @@ export default function Edit() {
 
                 <label htmlFor="dish-category">Категория</label>
                 <select id="dish-category" name="category">
-                    <option value="Предястия">Предястия</option>
+                    <option value="Закуски">Закуски</option>
+                    <option value="Топли-предястия">Топли предястия</option>
+                    <option value="Супи">Супи</option>
                     <option value="Основни">Основни</option>
-                    <option value="Десерти">Десерти</option>
+                    <option value="Скара">Скара</option>
+                    <option value="Риба">Риба</option>
+                    <option value="Гарнитура">Гарнитура</option>
                     <option value="Салати">Салати</option>
+                    <option value="Хляб">Хляб</option>
+                    <option value="Десерти">Десерти</option>
+                    <option value="Мезета">Мезета</option>
+                    <option value="Ядки">Ядки</option>
                     <option value="Напитки">Напитки</option>
                 </select>
 
-                <label htmlFor="dish-price">Цена</label>
-                <input type="text" id="dish-price" name="price" placeholder="Въведете цена" />
+                <label htmlFor="dish-price">Цена в лв.</label>
+                <input type="text" id="dish-price" name="priceLv" placeholder="Въведете цена в лв." />
+
+                <label htmlFor="dish-price">Цена в евро.</label>
+                <input type="text" id="dish-price" name="priceEuro" placeholder="Въведете цена в евро." />
 
                 <button type="submit">Запази</button>
             </form>

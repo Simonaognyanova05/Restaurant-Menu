@@ -12,10 +12,10 @@ export default function MenuItem({ dish, admin }) {
             <div className="menu-item">
                 <span className="menu-item-name">{dish.name}</span>
                 <span className="menu-item-description">{dish.description}</span>
-                <span className="menu-item-price">{dish.price.toFixed(2)} лв.</span>
+                <span className="menu-item-price">{dish.priceLv.toFixed(2)} лв./{dish.priceEuro.toFixed(2)}€</span>
 
                 {
-                    admin.email ? loggedAdmin : '' 
+                    admin.email ? loggedAdmin : ''
                 }
             </div>
 

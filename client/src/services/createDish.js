@@ -2,7 +2,7 @@ import { db } from "../config/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid"; 
 
-export async function createDish(name, description, category, price) {
+export async function createDish(name, description, category, priceLv, priceEuro) {
     try {
         const id = uuidv4(); 
         const newDish = {
@@ -10,7 +10,8 @@ export async function createDish(name, description, category, price) {
             name,
             description,
             category,
-            price: parseFloat(price) 
+            priceLv: parseFloat(priceLv),
+            priceEuro: parseFloat(priceEuro),
         };
         await setDoc(doc(db, "dishes", id), newDish);
         return id; 

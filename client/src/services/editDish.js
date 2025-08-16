@@ -1,14 +1,15 @@
 import { db } from "../config/firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
 
-export async function editDish(name, description, category, price, dishId) {
+export async function editDish(name, description, category, priceLv, priceEuro, dishId) {
     try {
         const dishDocRef = doc(db, "dishes", dishId);
         await updateDoc(dishDocRef, {
             name,
             description,
             category,
-            price: parseFloat(price)
+            priceLv: parseFloat(priceLv),
+            priceEuro: parseFloat(priceEuro),
         });
     } catch (error) {
         console.error("Error updating dish:", error);

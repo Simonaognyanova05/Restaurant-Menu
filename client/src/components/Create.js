@@ -8,9 +8,9 @@ export default function Create() {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const { name, description, category, price } = Object.fromEntries(formData);
+        const { name, description, category, priceLv, priceEuro } = Object.fromEntries(formData);
 
-        createDish(name, description, category, price)
+        createDish(name, description, category, priceLv, priceEuro)
             .then((id) => {
                 console.log("Dish created with ID:", id);
                 navigate('/');
@@ -47,8 +47,12 @@ export default function Create() {
                     <option value="Напитки">Напитки</option>
                 </select>
 
-                <label htmlFor="dish-price">Цена</label>
-                <input type="text" id="dish-price" name="price" placeholder="Въведете цена" />
+                <label htmlFor="dish-price">Цена в лв.</label>
+                <input type="text" id="dish-price" name="priceLv" placeholder="Въведете цена в лв." />
+
+                <label htmlFor="dish-price">Цена в евро.</label>
+                <input type="text" id="dish-price" name="priceEuro" placeholder="Въведете цена в евро." />
+
 
                 <button type="submit">Създаване</button>
             </form>
