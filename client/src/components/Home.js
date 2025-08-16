@@ -7,7 +7,7 @@ export default function Home() {
             </div>
             <div className="home-showcase">
                 <img
-                    src="https://i.imgur.com/oVzJ0Bj.jpeg"
+                    src="https://i.imgur.com/eb7rUrD.jpeg"
                     alt="Gourmet Food"
                     className="showcase-image"
                 />
