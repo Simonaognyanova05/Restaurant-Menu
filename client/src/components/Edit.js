@@ -82,7 +82,7 @@ export default function Edit() {
                     onChange={changeHandler}
                 >
                     <option value="Закуски">Закуски</option>
-                    <option value="Топли-предястия">Топли предястия</option>
+                    <option value="Топли-предястия">Топли-предястия</option>
                     <option value="Супи">Супи</option>
                     <option value="Основни">Основни</option>
                     <option value="Скара">Скара</option>
@@ -94,6 +94,8 @@ export default function Edit() {
                     <option value="Мезета">Мезета</option>
                     <option value="Ядки">Ядки</option>
                     <option value="Напитки">Напитки</option>
+                    <option value="Безалкохолни">Безалкохолни</option>
+
                 </select>
 
                 <label htmlFor="dish-price-lv">Цена в лв.</label>

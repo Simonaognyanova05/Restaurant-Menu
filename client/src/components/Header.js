@@ -38,6 +38,8 @@ export default function Header() {
                     <Link to="/Мезета">Мезета</Link>
                     <Link to="/Ядки">Ядки</Link>
                     <Link to="/Напитки">Напитки</Link>
+                    <Link to="/Безалкохолни">Безалкохолни</Link>
+
                     {admin.email ? loggedAdmin : ""}
                 </div>
             </div>
