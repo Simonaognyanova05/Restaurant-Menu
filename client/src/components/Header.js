@@ -25,10 +25,18 @@ export default function Header() {
                     ☰
                 </button>
                 <div className={`menu-links ${menuOpen ? "open" : ""}`}>
-                    <Link to="/Предястия">Предястия</Link>
+                    <Link to="/Закуски">Закуски</Link>
+                    <Link to="/Топли-предястия">Топли предястия</Link>
+                    <Link to="/Супи">Супи</Link>
                     <Link to="/Основни">Основни</Link>
-                    <Link to="/Десерти">Десерти</Link>
+                    <Link to="/Скара">Скара</Link>
+                    <Link to="/Риба">Риба</Link>
+                    <Link to="/Гарнитура">Гарнитура</Link>
                     <Link to="/Салати">Салати</Link>
+                    <Link to="/Хляб">Хляб</Link>
+                    <Link to="/Десерти">Десерти</Link>
+                    <Link to="/Мезета">Мезета</Link>
+                    <Link to="/Ядки">Ядки</Link>
                     <Link to="/Напитки">Напитки</Link>
                     {admin.email ? loggedAdmin : ""}
                 </div>

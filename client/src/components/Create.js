@@ -32,10 +32,18 @@ export default function Create() {
 
                 <label htmlFor="dish-category">Категория</label>
                 <select id="dish-category" name="category">
-                    <option value="Предястия">Предястия</option>
+                    <option value="Закуски">Закуски</option>
+                    <option value="Топли-предястия">Топли предястия</option>
+                    <option value="Супи">Супи</option>
                     <option value="Основни">Основни</option>
-                    <option value="Десерти">Десерти</option>
+                    <option value="Скара">Скара</option>
+                    <option value="Риба">Риба</option>
+                    <option value="Гарнитура">Гарнитура</option>
                     <option value="Салати">Салати</option>
+                    <option value="Хляб">Хляб</option>
+                    <option value="Десерти">Десерти</option>
+                    <option value="Мезета">Мезета</option>
+                    <option value="Ядки">Ядки</option>
                     <option value="Напитки">Напитки</option>
                 </select>
 
