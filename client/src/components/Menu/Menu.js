@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { getDishes } from "../../services/getDishes";
 import MenuItem from "./MenuItem";
@@ -11,10 +11,27 @@ export default function Menu() {
 
     useEffect(() => {
         getDishes(category)
-            .then(res => {
-                setDishes(res || []);
+            .then((res) => {
+                if (res && Array.isArray(res)) {
+                    const sorted = [...res].sort((a, b) => {
+                        // ако и двете имат createdAt -> сортираме по дата
+                        if (a.createdAt && b.createdAt) {
+                            return new Date(a.createdAt) - new Date(b.createdAt);
+                        }
+                        // ако само едното има -> то е по-ново
+                        if (a.createdAt && !b.createdAt) return -1;
+                        if (!a.createdAt && b.createdAt) return 1;
+
+                        // fallback: сортиране по _id (Mongo _id съдържа timestamp)
+                        return a._id.localeCompare(b._id);
+                    });
+
+                    setDishes(sorted);
+                } else {
+                    setDishes([]);
+                }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.error("Error fetching dishes:", err);
                 setDishes([]);
             });
@@ -23,7 +40,9 @@ export default function Menu() {
     return (
         <div className="menu-container">
             <div className="menu-header">
-                <Link to="/"><h1>Под старата круша</h1></Link>
+                <Link to="/">
+                    <h1>Под старата круша</h1>
+                </Link>
                 <p>Традиционни ястия, приготвени с любов.</p>
             </div>
 
