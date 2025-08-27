@@ -14,16 +14,16 @@ export default function Menu() {
             .then((res) => {
                 if (res && Array.isArray(res)) {
                     const sorted = [...res].sort((a, b) => {
-                        // ако и двете имат createdAt -> сортираме по дата
-                        if (a.createdAt && b.createdAt) {
-                            return new Date(a.createdAt) - new Date(b.createdAt);
-                        }
-                        // ако само едното има -> то е по-ново
-                        if (a.createdAt && !b.createdAt) return -1;
-                        if (!a.createdAt && b.createdAt) return 1;
+                        const dateA = a.createdAt ? new Date(a.createdAt) : null;
+                        const dateB = b.createdAt ? new Date(b.createdAt) : null;
 
-                        // fallback: сортиране по _id (Mongo _id съдържа timestamp)
-                        return a._id.localeCompare(b._id);
+                        if (dateA && dateB) {
+                            return dateB - dateA; // най-новите първи
+                        }
+                        if (dateA && !dateB) return -1;
+                        if (!dateA && dateB) return 1;
+
+                        return b._id.localeCompare(a._id);
                     });
 
                     setDishes(sorted);
@@ -36,6 +36,7 @@ export default function Menu() {
                 setDishes([]);
             });
     }, [category]);
+
 
     return (
         <div className="menu-container">

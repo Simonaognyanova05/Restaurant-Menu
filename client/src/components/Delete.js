@@ -9,7 +9,7 @@ export default function Delete() {
     useEffect(() => {
         deleteDish(dishId)
             .then(() => {
-                navigate('/Предястия'); 
+                navigate('/'); 
             })
             .catch((error) => {
                 console.error("Error deleting dish:", error);

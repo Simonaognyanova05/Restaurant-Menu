@@ -1,5 +1,5 @@
 import { db } from "../config/firebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid"; 
 
 export async function createDish(name, description, category, priceLv, priceEuro) {
@@ -12,7 +12,9 @@ export async function createDish(name, description, category, priceLv, priceEuro
             category,
             priceLv: parseFloat(priceLv),
             priceEuro: parseFloat(priceEuro),
+            createdAt: serverTimestamp(), // 🔥 автоматична дата от сървъра
         };
+
         await setDoc(doc(db, "dishes", id), newDish);
         return id; 
     } catch (error) {
