@@ -1,50 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { categories } from "../config/categories";
 
 export default function Header() {
     const { admin } = useAuth();
     const [menuOpen, setMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
-
-    const closeMenu = () => {
-        setMenuOpen(false);
-    };
-
-    const loggedAdmin = (
-        <>
-            <Link to="/admin/create" onClick={closeMenu}>Създаване на ястие</Link>
-            <Link to="/admin/register" onClick={closeMenu}>Създаване на потребител</Link>
-            <Link to="/admin/logout" onClick={closeMenu}>Изход</Link>
-        </>
-    );
-
+    const { pathname } = useLocation();
+    useEffect(() => { setMenuOpen(false); }, [pathname]);
     return (
-        <div className="navbar">
-            <button className="menu-toggle" onClick={toggleMenu}>
-                ☰
-            </button>
-            <div className={`menu-links ${menuOpen ? "open" : ""}`}>
-                <Link to="/Закуски" onClick={closeMenu}>Закуски</Link>
-                <Link to="/Топли-предястия" onClick={closeMenu}>Топли предястия</Link>
-                <Link to="/Супи" onClick={closeMenu}>Супи</Link>
-                <Link to="/Основни" onClick={closeMenu}>Основни</Link>
-                <Link to="/Скара" onClick={closeMenu}>Скара</Link>
-                <Link to="/Риба" onClick={closeMenu}>Риба</Link>
-                <Link to="/Гарнитура" onClick={closeMenu}>Гарнитура</Link>
-                <Link to="/Салати" onClick={closeMenu}>Салати</Link>
-                <Link to="/Хляб" onClick={closeMenu}>Хляб</Link>
-                <Link to="/Десерти" onClick={closeMenu}>Десерти</Link>
-                <Link to="/Мезета" onClick={closeMenu}>Мезета</Link>
-                <Link to="/Ядки" onClick={closeMenu}>Ядки</Link>
-                <Link to="/Напитки" onClick={closeMenu}>Напитки</Link>
-                <Link to="/Безалкохолни" onClick={closeMenu}>Безалкохолни</Link>
-
-                {admin.email ? loggedAdmin : ""}
+        <header className="site-header">
+            <a className="skip-link" href="#main-content">Към съдържанието</a>
+            <div className="masthead">
+                <span className="masthead-note">Традиционна българска кухня</span>
+                <Link className="wordmark" to="/" aria-label="Под старата круша — начало">
+                    <span>Под старата круша</span><small>Копривщица</small>
+                </Link>
+                <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="category-navigation" onClick={() => setMenuOpen(!menuOpen)}>
+                    {menuOpen ? 'Затвори' : 'Меню'} <span aria-hidden="true">{menuOpen ? '×' : '☰'}</span>
+                </button>
+                <Link className="masthead-link" to="/#our-menu">Разгледайте менюто <span aria-hidden="true">↗</span></Link>
             </div>
-        </div>
+            <nav id="category-navigation" className={`category-navigation ${menuOpen ? 'is-open' : ''}`} aria-label="Категории на менюто"
+                onKeyDown={(event) => { if (event.key === 'Escape') { setMenuOpen(false); document.querySelector('.menu-toggle')?.focus(); } }}>
+                <div className="menu-links">{categories.map(({ label, path }) => <NavLink key={path} to={`/${path}`}>{label}</NavLink>)}</div>
+                {admin.email && <div className="admin-navigation">
+                    <Link to="/admin/create">Създаване на ястие</Link>
+                    <Link to="/admin/register">Създаване на потребител</Link>
+                    <Link to="/admin/logout">Изход</Link>
+                </div>}
+            </nav>
+        </header>
     );
 }
