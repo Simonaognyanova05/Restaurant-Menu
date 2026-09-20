@@ -1,5 +1,6 @@
 import './static/css/style.css';
 import { Route, Routes } from 'react-router-dom';
+import RouteScroll from './components/RouteScroll';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Menu from "./components/Menu/Menu";
@@ -15,7 +16,9 @@ import ForgottenPass from './components/ForgottenPass';
 function App() {
   return (
     <>
+      <RouteScroll />
       <Header />
+      <main id="main-content" tabIndex={-1}>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/:category' element={<Menu />} />
@@ -28,6 +31,7 @@ function App() {
         <Route path='/edit/:dishId' element={<Edit />} />
 
       </Routes>
+      </main>
       <Footer />
     </>
   );

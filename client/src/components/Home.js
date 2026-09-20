@@ -1,30 +1,42 @@
+import { Link } from 'react-router-dom';
+import { categories } from '../config/categories';
+
 export default function Home() {
     return (
         <div className="home-container">
-            <div className="home-header">
-                <h1>Добре дошли в "Под старата круша"</h1>
-                <p>Традиционна бългрска кухня, в традиционна копривщенска обстановка</p>
-            </div>
-            <div className="home-showcase">
-                <img
-                    src="https://i.imgur.com/eb7rUrD.jpeg"
-                    alt="Gourmet Food"
-                    className="showcase-image"
-                />
-            </div>
-            <div className="home-intro">
-                <h2>Кулинарни изкушения</h2>
-                <p>
-                    Нашите ястия са създадени с най-добрите съставки и приготвени с внимание към детайла.
-                    Опитайте вкусове, които ще ви накарат да се върнете отново!
-                </p>
-                <p>
-                    Обявените цени са в български лева и в евро и са за един брой!
-                </p>
-                <p>
-                    The prices are in Bulgarian leva and EURO!
-                </p>
-            </div>
+            <section className="home-hero" aria-labelledby="welcome-title">
+                <div className="home-header">
+                    <p className="eyebrow">Добре дошли на нашата трапеза</p>
+                    <h1 id="welcome-title">Под старата<br /><em>круша</em><span className="title-dot">.</span></h1>
+                    <div className="hero-rule" />
+                    <p className="hero-description">Традиционна българска кухня.<br />В сърцето на Копривщица.</p>
+                    <a className="text-link" href="#our-menu">Нашето меню <span aria-hidden="true">↗</span></a>
+                    <span className="hero-footnote">Добрата храна събира.</span>
+                </div>
+                <figure className="home-showcase">
+                    <img src="https://i.imgur.com/eb7rUrD.jpeg" alt="Под старата круша" className="showcase-image" fetchPriority="high" />
+                    <figcaption><span>Под старата круша</span><span>Копривщица, България</span></figcaption>
+                </figure>
+            </section>
+            <section className="home-menu" id="our-menu" aria-labelledby="our-menu-title">
+                <div className="section-heading">
+                    <div><p className="eyebrow">Вкусът на традицията</p><h2 id="our-menu-title">Нашето меню</h2></div>
+                    <p>От първата хапка<br />до последния сладък миг.</p>
+                </div>
+                <div className="category-index">
+                    {categories.map(({ label, path }, index) => (
+                        <Link to={`/${path}`} key={path} className="category-entry">
+                            <span className="category-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                            <span>{label}</span><span className="category-arrow" aria-hidden="true">↗</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
+            <section className="home-intro">
+                <p className="eyebrow">С внимание към всяко ястие</p>
+                <h2>Познатият вкус.<br /><em>Удоволствието да останеш.</em></h2>
+                <p>Българска кухня, приготвена с грижа, и традиционна копривщенска обстановка. Заповядайте на нашата трапеза.</p>
+            </section>
         </div>
     );
 }
