@@ -1,8 +1,8 @@
-import { Form, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../static/css/style.css';
-import { useAuth } from '../contexts/AuthContext';
+
 import { register } from '../services/register';
-import { useState } from 'react';
+
 
 export default function Register() {
     const navigate = useNavigate();
